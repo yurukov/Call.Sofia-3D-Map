@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" dir="ltr" lang="bg-BG" itemscope="itemscope" itemtype="http://schema.org/Organization">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Сигналите на call.sofia</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="description" content="Интерактивна карта с всички сигнали за нередности в София с инструменти за анализ."/>
+    <meta http-equiv="author" content="Boyan Yurukov" />
+    <meta http-equiv="contact" content="boyan@yurukov.net" />
+    <meta name="keywords" content="call.sofia.bg, сигнали, София, Софийска община, инфрастуктура, дупки,  оплаквания" />
+
+    <link rel="image_src" type="image/png" href="res/callsofia-scr.png" />
+    <meta itemprop="name" content="Сигналите в call.sofia"/>
+    <meta itemprop="description" content="Интерактивна карта с всички сигнали за нередности в София с инструменти за анализ."/>
+    <meta itemprop="image" content="res/callsofia-scr.png"/>
+
+    <meta property="og:url" content="https://opendata.yurukov.net" />
+    <meta property="og:type" content="website" />       
+    <meta property="og:title" content="Сигналите в call.sofia" />
+    <meta property="og:description" content="Интерактивна карта с всички сигнали за нередности в София с инструменти за анализ." />
+    <meta property="og:image" content="https://opendata.yurukov.net/callsofia/explore/res/callsofia-scr.png" />  
+    <meta property="fb:admins" content="729277024" />
+    <meta property="fb:app_id" content="421773258174901" />
+    <meta property="article:publisher" content="https://www.facebook.com/yurukov.net" />
+    <meta property="article:author" content="https://www.facebook.com/yurukov.net" />
+    <meta property="article:published_time" content="2022-03-30T20:00:00Z" />
+    <meta property="article:modified_time" content="2022-03-30T20:00:00Z" />    
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@yurukov"/>
+    <meta name="twitter:domain" content="opendata.yurukov.net" />
+    <meta name="twitter:title" content="Сигналите в call.sofia"/>
+    <meta name="twitter:description" content="Интерактивна карта с всички сигнали за нередности в София с инструменти за анализ."/>
+    <meta name="twitter:image:src" content="https://opendata.yurukov.net/callsofia/explore/res/callsofia-scr.png"/>
+  </head>
+  <body style="background:linear-gradient(to bottom, lightgray 0%, white 0%)">
+    
+    <div id="map" style="visibility:hidden"></div>
+     
+    <div id="map-overlay" style="left:0; visibility:hidden">
+      <div class="closer">X</div>
+      <h1>Сигнали в call.sofia</h1>
+      <div id="title-chart">
+          <a class="reset" href="javascript:dc.filterAll();dc.redrawAll();">изчисти всички филтри</a><br/>
+          <strong>Показани сигнали: </strong><i></i>
+      </div>
+      <div id="category-chart">
+          <strong>Категория</strong>
+          <a class="reset" href="javascript:categoryChart.filterAll();dc.redrawAll();" style="display: none;">изчисти</a>
+          <div class="clearfix"></div>
+      </div>
+      <div id="laststate-chart">
+          <strong>Последно състояние</strong>
+          <a class="reset" href="javascript:laststateChart.filterAll();dc.redrawAll();" style="display: none;">изчисти</a>
+          <div class="clearfix"></div>
+      </div>
+      <div id="region-chart">
+          <strong>По райони</strong>
+          <br/><span>покажи </span><a id="region-chart-type" href="javascript:toggleRegionFilterType()">всички сигнали</a>
+          <span class="reset" style="display: none;"> | </span>
+          <a class="reset" href="javascript:regionChart.filterAll();dc.redrawAll();" style="display: none;">изчисти</a>
+          <div class="clearfix"></div>
+      </div>
+      <div id="kvartal-chart">
+          <strong>По квартали</strong>
+          <br/><span>40-те с най-много сигнала</span>
+          <span class="reset" style="display: none;"> | </span>
+          <a class="reset" href="javascript:kvartalChart.filterAll();dc.redrawAll();" style="display: none;">изчисти</a>
+          <div class="clearfix"></div>
+      </div>
+      <div id="daystostate-chart">
+          <strong>Дни до последно състояние</strong>
+          <br/><span class="filter"></span>
+          <span class="reset" style="visibility: hidden;"> | </span>
+          <a class="reset" href="javascript:daystostateChart.filterAll();dc.redrawAll();" style="visibility: hidden;">изчисти</a>
+          <div class="clearfix"></div>
+      </div>
+      <div id="day-of-week-chart">
+          <strong>Ден от седмицата</strong>
+          <a class="reset" href="javascript:dayOfWeekChart.filterAll();dc.redrawAll();" style="display: none;">изчисти</a>
+          <div class="clearfix"></div>
+      </div>
+      <div id="month-chart">
+          <strong>По месеци</strong>
+          <br/><span class="filter"></span>
+          <span class="reset" style="visibility: hidden;"> | </span>
+          <a class="reset" href="javascript:monthChart.filterAll();dc.redrawAll();" style="visibility: hidden;">изчисти</a>
+          <div class="clearfix"></div>
+      </div>
+      <div id="year-chart">
+          <strong>По години</strong>
+          <a class="reset" href="javascript:yearChart.filterAll();dc.redrawAll();" style="display: none;">изчисти</a>
+          <div class="clearfix"></div>
+      </div>
+    </div>
+    <div id="map-info" style="visibility:hidden">
+      <div class='closer'>X</div>
+      <h3>Сигнали на това място</h3>
+    </div>
+    <div id="progress-counter">
+      <span style="color:white">Зареждам данните...</span>
+      <h1/>
+    </div>
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+    <link href="https://unpkg.com/dc@4.2.7/dist/style/dc.min.css" rel="stylesheet">
+    <link href="res/map.css" rel="stylesheet">
+     
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/crossfilter2@1.5.4/crossfilter.min.js"></script>
+    <script src="https://unpkg.com/dc@4.2.7/dist/dc.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+    <script src="res/map.js" async></script>
+  </body>
+</html>
