@@ -1,7 +1,8 @@
 const tilesetName='mapbox://yurukov.call-sofia-tileset';
 const sName='call.sofia.tileset';
-const slName='call-sofia-tileset-sourse';
-mapboxgl.accessToken='[mappbox public token]';
+const slName='call-sofia-tileset-source';
+
+mapboxgl.accessToken='[mapbox public token]';
 
 const colorSchemeCharts = ["#fde0dd", "#fcc5c0", "#fa9fb5", "#f768a1", "#dd3497", "#ae017e", "#7a0177"].reverse();  
 const colorSchemeMap = ["#feebe2", "#fcc5c0", "#fa9fb5", "#f768a1", "#dd3497", "#ae017e", "#7a0177"];  
@@ -149,16 +150,18 @@ d3.csv("data/call.sofia.names.csv",(d)=>{
 });
 
 const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/yurukov/ckzsdoxs4000e15pc2z23q7rq',
-    center: [23.3155, 42.6824],
-    maxZoom: 16,
-    minZoom: 11.1,
-    zoom: 12,
-    pitch: 45,
-    bearing: 0,
-    antialias: true
+  container: 'map',
+  style: 'mapbox://styles/mapbox/satellite-streets-v12',
+  center: [23.3155, 42.6824],
+  maxZoom: 16,
+  minZoom: 11.1,
+  zoom: 12,
+  pitch: 45,
+  bearing: 0,
+  antialias: true,
+  projection: 'globe'
 });
+
 const popup = new mapboxgl.Popup({
   anchor:"left", 
   offset: 10,
