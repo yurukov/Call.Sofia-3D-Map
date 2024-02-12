@@ -1,8 +1,11 @@
 # Call.Sofia 3D Map
-3D visualization for historic data of citizen reports and raised issues in Sofia, Bulgaria
 
-Original link: https://opendata.yurukov.net/callsofia/explore/
+![снимка на картата](callsofia.scr.png)
 
-Blog post on release (in Bulgarian): https://yurukov.net/blog/2022/call-sofia-opendata/
+3D визуализация на исторически данни на сигнали в портала на Столична община за София.
 
-See [site/data/README.md](site/data/README.md) for data model and encoding
+Оригинална страница: https://opendata.yurukov.net/callsofia/explore/
+
+Блог статия по темата: https://yurukov.net/blog/2022/call-sofia-opendata/
+
+Вижте [site/data/README.md](site/data/README.md) за модела на данните и кодирането им
